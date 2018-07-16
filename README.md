@@ -1,6 +1,19 @@
-# week-do
+# DoWeekly
 
-> Weekly planner
+> Super simple weekly planner for people with a lot of things to do
+
+## Planned features  
+- [x] Add tasks
+- [x] Delete tasks
+- [ ] Complete tasks
+- [ ] Move tasks between days
+  - [ ] Drag and drop
+- [ ] Backlog (tasks that don't fit with in a week
+
+## Development TODOs
+- [ ] Add tests
+  - [ ] Unit tests
+  - [ ] E2E tests
 
 #### Build Setup
 
