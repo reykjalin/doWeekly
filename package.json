@@ -1,7 +1,7 @@
 {
   "name": "doWeekly",
   "productName": "doWeekly",
-  "version": "0.0.0",
+  "version": "0.0.1",
   "author": "Kristófer Reykjalín Þorláksson <kristoferrt@gmail.com>",
   "description": "Weekly planner",
   "license": null,
