@@ -32,7 +32,7 @@
           <div class="field">
             <label class="label">Task</label>
             <div class="control">
-              <textarea class="textarea" placeholder="New task" v-model="newTask"></textarea>
+              <textarea class="textarea" placeholder="New task" v-model="newTask" autofocus></textarea>
             </div>
           </div>
 
@@ -64,7 +64,6 @@
       day: Date
     },
     created () {
-      console.log(this.day)
       this.$store.dispatch('loadTasks', this.day.getTime())
     },
     data () {
@@ -110,7 +109,7 @@
       },
       createTask () {
         // Make sure there is no ambiguity in task location
-        let time = this.day
+        let time = new Date(this.day.getTime())
         time.setHours(12)
 
         let task = {
@@ -119,8 +118,8 @@
           completed: false,
           dateCompleted: null
         }
-        console.log(task)
 
+        console.log(this.day)
         this.$store.dispatch('newTask', task)
 
         this.toggleModal()

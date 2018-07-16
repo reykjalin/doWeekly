@@ -30,7 +30,6 @@ const actions = {
           console.log(err)
         }
 
-        console.log(tasks)
         commit('setTasks', {
           timestamp: timestamp,
           tasks: tasks
@@ -44,9 +43,11 @@ const actions = {
       if (err) {
         console.log(err)
       }
-      console.log(newTask)
 
-      dispatch('loadTasks', task.date)
+      // Set the correct timing to load updated task list
+      let time = new Date(newTask.date)
+      time.setHours(23)
+      dispatch('loadTasks', time.getTime())
     })
   },
 
@@ -55,7 +56,11 @@ const actions = {
       if (err) {
         console.log(err)
       }
-      dispatch('loadTasks', taskData.date)
+
+      // Set the correct timing to load updated task list
+      let time = new Date(taskData.date)
+      time.setHours(23)
+      dispatch('loadTasks', time.getTime())
     })
   }
 }

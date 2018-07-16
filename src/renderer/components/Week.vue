@@ -35,8 +35,10 @@
     methods: {
       addDays (daysToAdd) {
         let ret = new Date()
+        ret.setHours(23)
+        ret.setMinutes(59)
+        ret.setSeconds(59)
         ret.setDate(ret.getDate() + daysToAdd)
-        console.log(ret)
         return ret
       }
     }
