@@ -1,7 +1,7 @@
 <template>
   <div class="tile box">
     {{ task }}
-    <button class="delete right" />
+    <button class="delete right" @click="deleteTask()" />
   </div>
 </template>
 
@@ -9,8 +9,18 @@
   export default {
     name: 'task',
     props: {
-      id: Number,
-      task: String
+      id: String,
+      task: String,
+      date: Number
+    },
+    methods: {
+      deleteTask () {
+        console.log(this.id)
+        this.$store.dispatch('deleteTask', {
+          _id: this.id,
+          date: this.date
+        })
+      }
     }
   }
 </script>

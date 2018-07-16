@@ -4,7 +4,7 @@
 
       <div class="level-left">
         <div class="level-item">
-          <p class="title">{{ day }}</p>
+          <p class="title">{{ today }}</p>
         </div>
       </div>
 
@@ -17,10 +17,11 @@
     </div>
 
     <Task
-      v-for="task in taskList"
-      v-bind:key="task.id"
-      v-bind:id="task.id"
+      v-for="task in tasks"
+      v-bind:key="task._id"
+      v-bind:id="task._id"
       v-bind:task="task.description"
+      v-bind:date="task.date"
       />
 
     <div class="modal" v-bind:class="{ 'is-active': show }">
@@ -40,7 +41,7 @@
               <button class="button is-text" @click="toggleModal()">Cancel</button>
             </div>
             <div class="control">
-              <button class="button is-link">Submit</button>
+              <button class="button is-link" @click="createTask()">Submit</button>
             </div>
           </div>
 
@@ -60,18 +61,73 @@
       'Task': task
     },
     props: {
-      taskList: Object,
-      day: String
+      day: Date
+    },
+    created () {
+      console.log(this.day)
+      this.$store.dispatch('loadTasks', this.day.getTime())
     },
     data () {
       return {
         show: false,
-        newTask: ''
+        newTask: '',
+        days: [
+          'Sunday',
+          'Monday',
+          'Tuesday',
+          'Wednesday',
+          'Thursday',
+          'Friday',
+          'Saturday'
+        ],
+        months: [
+          'January',
+          'February',
+          'March',
+          'April',
+          'May',
+          'June',
+          'July',
+          'August',
+          'September',
+          'October',
+          'November',
+          'December'
+        ]
+      }
+    },
+    computed: {
+      tasks () {
+        return this.$store.getters.getTasks[this.day.getTime()]
+      },
+      today () {
+        return this.days[this.day.getDay()] + ' ' + this.months[this.day.getMonth()] + ' ' + this.day.getDate()
       }
     },
     methods: {
       toggleModal () {
         this.show = !this.show
+      },
+      createTask () {
+        // Make sure there is no ambiguity in task location
+        let time = this.day
+        time.setHours(12)
+
+        let task = {
+          description: this.newTask,
+          date: time.getTime(),
+          completed: false,
+          dateCompleted: null
+        }
+        console.log(task)
+
+        this.$store.dispatch('newTask', task)
+
+        this.toggleModal()
+        this.resetModel()
+      },
+      resetModel () {
+        this.newTask = ''
       }
     }
   }

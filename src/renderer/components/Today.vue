@@ -3,7 +3,7 @@
     <div class="container">
       <div class="tile is-ancestor">
         <div class="tile">
-          <taskList :day="'Today'" :taskList="tasks" />
+          <taskList :day="today" />
         </div>
       </div>
     </div>
@@ -18,18 +18,13 @@
     components: {
       'taskList': taskList
     },
-    data () {
-      return {
-        tasks: {
-          task1: {
-            id: 1,
-            description: 'task 1'
-          },
-          task2: {
-            id: 2,
-            description: 'task 2'
-          }
-        }
+    computed: {
+      today () {
+        let today = new Date()
+        today.setHours(23)
+        today.setMinutes(59)
+        today.setSeconds(59)
+        return today
       }
     }
   }
