@@ -21,6 +21,11 @@ export default new Router({
       component: require('@/components/Today').default
     },
     {
+      path: '/future',
+      name: 'future',
+      component: require('@/components/Future').default
+    },
+    {
       path: '*',
       redirect: '/'
     }

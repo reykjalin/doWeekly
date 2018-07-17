@@ -4,6 +4,7 @@
       <ul>
         <li v-bind:class="{ 'is-active': this.$route.path == '/today' }"><a @click="today()">Today</a></li>
         <li v-bind:class="{ 'is-active': this.$route.path == '/week' }"><a @click="week()">Week</a></li>
+        <li v-bind:class="{ 'is-active': this.$route.path == '/future' }"><a @click="future()">Backlog</a></li>
         <!-- <li><a>Month</a></li> -->
       </ul>
     </div>
@@ -19,6 +20,9 @@
       },
       week () {
         this.$router.push({ name: 'week' })
+      },
+      future () {
+        this.$router.push({ name: 'future' })
       },
       month () {}
     }
