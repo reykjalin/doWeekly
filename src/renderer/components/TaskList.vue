@@ -21,7 +21,8 @@
       v-bind:key="task._id"
       v-bind:id="task._id"
       v-bind:task="task.description"
-      v-bind:date="task.date"
+      v-bind:date="day.getTime()"
+      draggable
       />
 
     <div class="modal" v-bind:class="{ 'is-active': show }">
