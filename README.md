@@ -2,13 +2,16 @@
 
 > Super simple weekly planner for people with a lot of things to do
 
-## Planned features  
+## Planned features
 - [x] Add tasks
 - [x] Delete tasks
-- [ ] Complete tasks
 - [ ] Move tasks between days
-  - [ ] Drag and drop
-- [ ] Backlog (tasks that don't fit with in a week
+  * Ideally implemented as drag and drop
+- [ ] Backlog (tasks that don't fit within a week)
+  - [x] Add tasks to backlog
+  - [x] Delete tasks from backlog
+  - [ ] Move tasks from backlog to "Today" or "Week"
+  - [ ] Move tasks from "Today" or "Week" to backlog
 
 ## Development TODOs
 - [ ] Add tests
