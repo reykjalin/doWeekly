@@ -10,7 +10,7 @@
 
       <div class="level-right">
         <div class="level-item">
-          <a class="button is-info" @click="toggleModal()"><font-awesome-icon icon="plus" /></a>
+          <a class="button is-text" @click="toggleModal()"><font-awesome-icon icon="plus" /></a>
         </div>
       </div>
 
