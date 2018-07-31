@@ -14,7 +14,7 @@ const actions = {
       then.setDate(then.getDate() - 1)
       let from = then.getTime()
 
-      db.find({ $and: [{ date: { $gt: from } }, { date: { $lte: to } }] }, function (err, tasks) {
+      db.find({ $and: [{ date: { $gt: from } }, { date: { $lte: to } }] }).sort({ description: 1 }).exec(function (err, tasks) {
         if (err) {
           console.log(err)
         }
@@ -25,7 +25,7 @@ const actions = {
         })
       })
     } else {
-      db.find({ date: { $lte: timestamp } }, function (err, tasks) {
+      db.find({ date: { $lte: timestamp } }).sort({ description: 1 }).exec(function (err, tasks) {
         if (err) {
           console.log(err)
         }

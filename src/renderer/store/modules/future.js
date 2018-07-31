@@ -6,7 +6,7 @@ const state = {
 
 const actions = {
   loadFutureTasks ({ commit }) {
-    backlog.find({}, function (err, tasks) {
+    backlog.find({}).sort({ description: 1 }).exec(function (err, tasks) {
       if (err) {
         console.log(err)
       }
